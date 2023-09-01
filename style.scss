@@ -1,8 +1,11 @@
+// Импорт стилей других станиц
 @import url(nullstyle.scss);
 @import url(catalogStyle.scss);
 @import url(card__product.scss);
 @import url(map.scss);
 
+
+// Миксины для брейкпоинтов
 @mixin breakPointSmall {
   @media screen and (max-width: 576px) {
     @content;
@@ -27,21 +30,49 @@
   }
 }
 
+// переменные для цветов
+$dark: #333;
+$light: #fff;
+
+// миксины для подзаголовков
+@mixin pretitle {
+  color: $dark;
+  text-align: center;
+  font-family: Gilroy;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+// миксины для заголовков
+@mixin title {
+  color: $dark;
+  text-align: center;
+  font-family: Noto Serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 40px;
+}
+
+
+
+// миксин для основного и ховер стиля кнопок
 @mixin buttonStyle {
   text-align: center;
   padding: 10px 20px;
-  color: #fff;
-  border: 1px solid white;
+  color: $light;
+  border: 1px solid $light;
   background-color: #3a3939;
-font-family: Gilroy;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.9px;
-text-transform: uppercase;
-
-  
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
 }
 
 @mixin buttonoStyleHover {
@@ -51,7 +82,7 @@ text-transform: uppercase;
   color: $dark;
   transition: 0.5s;
 
-  color: var(--accent, #333);
+  color: var(--accent, $dark);
   text-align: center;
   font-family: Gilroy;
   font-size: 18px;
@@ -62,26 +93,15 @@ text-transform: uppercase;
   
 }
 
-$dark: #333;
-$light: #fff;
-
-
-// 576
-// 768
-// 992
-// 1200
-// 1400
-
-
 // Подключение шрифтов
+
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Poiret+One&family=Poppins:wght@100&display=swap");
 
 .body {
   margin: 0;
-  /* display:flex; */
-  /* place-items:center; */
   min-width: 320px;
-  min-height: 100vh
+  min-height: 100vh;
+
 }
 
 .container {
@@ -95,18 +115,12 @@ $light: #fff;
   align-items: center;
 }
 
-// @media screen and (min-width: 1400px) {
-//     .container {
-//         background-color:gray;
-//     }
-// }
-
-
 .header {
   display: flex;
   justify-content: center;
   padding: 20px 0px;
-  
+  margin-bottom: 200px;
+
   .header__info {
     display: flex;
     padding: 0px 20px;
@@ -133,15 +147,21 @@ $light: #fff;
   .header__nav a {
     margin: auto;
   }
+
+}
+
+.burger {
+  display: none;
 }
 
 .header__a:visited {
   color: $light;
-  background-color: #333;
+  background-color: $dark;
 }
 
+// скрытие навигации в хэдэре
 @media screen and (max-width: 1100px) {
-    .header .header__info {
+    .header__info {
     display: none;
     }
 
@@ -158,6 +178,7 @@ $light: #fff;
     }
 }
 
+// стиль первого блока
 .first_section {
   width: 100%;
   height: 676px;
@@ -170,7 +191,7 @@ $light: #fff;
   margin-bottom: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@include breakPointMedium {
   .first_section {
     width: 100%;
     height: 676px;
@@ -196,59 +217,70 @@ $light: #fff;
     font-weight: 700;
     line-height: normal;
   }
-@media screen and (max-width: 766px) {
-    .catalog__title {
-      font-size: 10px;
-    }
+
+@include breakPointMedium {
+
     .catalog {
         margin-bottom: 80px;
     }
     .catalog__button_first {
         margin-bottom: 100px;
     }
-}
-  .catalog__button_first {
-    @include buttonStyle;
-    
-  }
-
-  .catalog__button_first:hover {
-    @include buttonoStyleHover;
-  }
+    .catalog__title {
+      font-size: 30px
+    }
 }
 
+// стилизация кнопки "каталог изделий"
+.catalog__button_first {
+  @include buttonStyle;
+
+  }
+
+.catalog__button_first:hover {
+  @include buttonoStyleHover;
+}
+
+}
+
+
+// стилизация изображений с брендами в первом блоке
 .catalog__brands {
   display: flex;
   justify-content: center;
-  border-top: 2px solid black;
   padding: 20px;
   flex-wrap: wrap;
 }
-@media screen and (max-width: 766px) {
+
+// скытие изображений с брендами в первом блоке на всех экранах менее 766px
+@include breakPointMedium {
   .catalog__brands {
     display: none;
   }
 }
+
+// граница над изображениями с брендами на всех экранах менее 1200px
+@include breakPointBigest {
+  .catalog__brands {
+    border-top: 2px solid black;
+  }
+}
+
 .catalog__brands_img {
   display: flex;
 }
 
 .product {
-  width: 80%;
+  max-width: 1100px;
   margin-bottom: 50px;
 }
 
-.product__desc {
-  text-align: center;
-  font-size: medium;
-  margin-bottom: 20px;
-  & p {
-    font-size: small;
-    margin-bottom: 40px;
-  }
-  & h2 {
-    font-size: larger;
-  }
+.product__desc_pretitle {
+  @include pretitle
+}
+
+.product__desc_title {
+  @include title
 }
 
 .product {
@@ -260,26 +292,54 @@ $light: #fff;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  // & button {
-  //   background-color: aliceblue;
-  //   color: $dark;
-  //   border: 0.7px solid black;
-  //   margin: 10px;
-  //   padding: 2px;
-  //   flex-grow: 1;
-  //   box-shadow: 6px 4px 0px palegoldenrod;
-  // }
+  margin-bottom: 30px
 }
 
 .product__button {
+  @include buttonStyle
+}
+
+.product__button:hover {
+  @include buttonoStyleHover
+}
+
+
+.product__buttons button {
   @include buttonStyle;
   color: $light;
   background-color: $dark;
+  width: 150px;
   &:hover {
       @include buttonoStyleHover;
   }
 
 }
+
+.product__button:hover {
+  @include buttonoStyleHover;
+} 
+
+@include breakPointMedium {
+  .product__buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px
+  }
+}
+
+@include breakPointSmall {
+  .product__buttons {
+    margin: 0px auto 40px;
+    justify-content: center;
+  
+    
+  }
+  .product__buttons button {
+    width: 90%;
+  }
+}
+
 
 .product__images {
   display: flex;
@@ -306,13 +366,8 @@ $light: #fff;
 @media screen and (max-width:768px) {
     .product__images_container {
         position: sticky;
-        top: 120px;
+        top: 10px;
     }
-    .product__buttons {
-        position: sticky;
-        top: 40px;
-    }
-    
 }
 
 .ourSaloon {   
@@ -326,11 +381,14 @@ $light: #fff;
     text-align: center;
     margin-bottom: 40px;
   & .ourSaloon__p {
-    margin: 40px;
+    @include pretitle;
+    color: $light;
+    
   }
 
   & .ourSaloon__h1 {
-    margin-bottom: 60px;
+    @include title;
+    color: $light;
   }
 
   }
@@ -360,7 +418,8 @@ $light: #fff;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
-    // justify-content: center;
+    max-width: 1120px;
+
 }
 
 .socialMedias__desc {
@@ -377,8 +436,9 @@ $light: #fff;
 
 @media screen and (max-width: 992px) {
     .socialMedias {
-    max-width: 100%;
+    width: 80%;
     overflow: hidden;
+    
 }
 }
 
@@ -394,21 +454,13 @@ $light: #fff;
     text-align: center;
     margin-bottom: 40px;
     .distribution__p {
-        font-family: Gilroy;
-    font-size: 21px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 140%;
-        margin: 20px;
+      @include pretitle;
+      color: $light
     }
 
     .distribution__h1 {
-        margin-bottom: 60px;
-        font-family: Gilroy;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 140%; /* 25.2px */
+        @include title;
+        color: $light;
     }
 }
 
@@ -424,6 +476,7 @@ $light: #fff;
     .distribution {
         flex-direction: column;
         height: 100%;
+        padding: 0px 40px;
         
     }
     .distribution__form {
@@ -440,10 +493,10 @@ $light: #fff;
 
 .distribution__form_list li{
     font-family: Gilroy;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 140%;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
     margin-bottom: 10px;
     background: url(../../public/icons/subscribe__icon.png) left no-repeat;
     padding: 0 0 0 30px;
@@ -473,7 +526,12 @@ line-height: 140%;
     
 }
 
-@media screen and (max-width: 769px) {
+.distribution__form_contain input {
+  width: 180px;
+  height: 50px;
+}
+
+@include breakPointMedium {
     .distribution__form_contain {
         display: block;
     }
@@ -481,16 +539,11 @@ line-height: 140%;
 
 .distribution__form_button {
     @include buttonStyle;
-    font-family: Gilroy;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
+    padding: 14px 35px;
    
     &:hover {
         @include buttonoStyleHover;
+        padding: 14px 35px;
     }
 }
 
@@ -499,23 +552,24 @@ line-height: 140%;
     flex-direction: column;
     align-items: center;
     font-family: Gilroy;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%
 }
 
 .footer__contacts {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    border-bottom: 1px solid $dark;
-    width: 80%;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $dark;
+  width: 80%;
 
 }
 
 .footer__contacts-column {
-    max-width: 25%;
+    width: 25%;
 }
 
 .footer__contacts-ul h1 {
@@ -527,14 +581,18 @@ line-height: 150%
     line-height: 40px;
 }
 
-@media screen and (max-width: 992px) {
+@include breakPointMedium {
+    .footer {
+      width: 100%;
+    }
     .footer__contacts {
         display: block;
         text-align: center;
+        width: 100%;
     }
 
     .footer__contacts-column {
-        max-width: 100%;
+        width: 100%;
     }
 
     .footer__contacts-ul h1 {
@@ -558,3 +616,19 @@ line-height: 150%
         text-align: center;
     }
 }
+
+
+.header a:link {
+  font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+  color: $light;
+}
+
+.header a:hover {
+  color: $light;
+  text-shadow: 0px 0px 12px white;
+}
+

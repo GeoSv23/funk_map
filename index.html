@@ -1,13 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>funk map</title>
+    <link rel="stylesheet" type="text/css" href="/style.scss" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <header class="header__general">
+      <div class="header__info">
+        <a class="header__a" href="https://www.google.ru/">по умолчанию</a>
+        <a class="header__a" href="#">по умолчанию</a>
+        <a class="header__a" href="#">по умолчанию</a>
+      </div>
+      <div class="header__image">
+        <a href="https://geosv23.github.io/funk/">
+          <img src="/public/images/OJJO.png" alt="ojjo" />
+        </a>
+      </div>
+      <div class="header__nav">
+        <a href="https://www.google.ru/">
+          <img src="/public/icons/gridicons_search.png" alt="" />
+        </a>
+        <a class="header__a" href="#">по умолчанию</a>
+        <a class="header__a" href="#">по умолчанию</a>
+        <a href="https://www.google.ru/">
+          <img src="/public/icons/user.png" alt="" />
+        </a>
+        <a href="https://www.google.ru/">
+          <img src="/public/icons/hart.png" alt="" />
+        </a>
+      </div>
+    </header>
+
+    <div class="wrapper">
+      <p class="map__nav">
+        <a href="https://geosv23.github.io/funk/" class="map__link">Главная</a>
+        / Контакты
+      </p>
+      <h1 class="map__title">Контакты</h1>
+      <div class="map__contacts">
+        <div class="map__contacts-column">
+          <h1>Главный офис</h1>
+          <ul class="map__contacts-ul">
+            <li>Невский 140, офис 1-5</li>
+            <li>Невский 140, офис 1-5</li>
+          </ul>
+        </div>
+        <div class="map__contacts-column">
+          <h1>Телефоны</h1>
+          <ul class="map__contacts-ul">
+            <li>8 (812) 458-56-45</li>
+            <li>8 (812) 458-56-45</li>
+          </ul>
+        </div>
+        <div class="map__contacts-column">
+          <h1>E-mail</h1>
+          <ul class="map__contacts-ul">
+            <li>office@ojjo.com</li>
+            <li>office@ojjo.com</li>
+          </ul>
+        </div>
+        <div class="map__contacts-column">
+          <h1>Доп. адреса</h1>
+          <ul class="map__contacts-ul">
+            <li>Невский 140, офис 1-5</li>
+            <li>Загородный 145, офис 11-15</li>
+          </ul>
+        </div>
+      </div>
+      <div class="map__map">
+        <script
+          type="text/javascript"
+          charset="utf-8"
+          async
+          src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ada9e906bc6dc0595dc5c3f87b541628dc99ab5e669e5da7f47c2b12fc2825378&amp;width=100%&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"
+        ></script>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer__contacts">
+        <div class="footer__contacts-column">
+          <ul class="footer__contacts-ul">
+            <h1>Полезные ссылки</h1>
+            <li>Доставка</li>
+            <li>Оплата</li>
+            <li>Акции</li>
+            <li>Политика конфидециальности</li>
+          </ul>
+        </div>
+        <div class="footer__contacts-column">
+          <ul class="footer__contacts-ul">
+            <h1>Оплата</h1>
+            <li>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt
+              officiis voluptates nesciunt.
+            </li>
+            <li>
+              <img src="public/icons/Rectangle 13.png" alt="" /><img
+                src="public/icons/Rectangle 14.png"
+                alt=""
+              />
+            </li>
+          </ul>
+        </div>
+        <div class="footer__contacts-column">
+          <ul class="footer__contacts-ul">
+            <h1>Контакты</h1>
+            <li>8 (812) 234-56-55</li>
+            <li>8 (812) 234-56-55</li>
+            <li>ojjo@ojjo.ru</li>
+          </ul>
+        </div>
+        <div class="footer__contacts-column">
+          <ul class="footer__contacts-ul">
+            <h1>Социальные сети</h1>
+            <li>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam,
+              iste!
+            </li>
+            <li>
+              <img src="public/icons/Vector (21).png" alt="" /><img
+                src="public/icons/Vector (22).png"
+                alt=""
+              />
+              <img src="public/icons/Vector (23).png" alt="" /><img
+                src="public/icons/Vector (24).png"
+                alt=""
+              />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__rights">
+        <p class="footer__rights-p">(c) 2020 OJJO jewelry</p>
+        <p class="footer__rights-p">Договор публичной офферты</p>
+        <p class="footer__rights-p">Контрагентам</p>
+        <p class="footer__rights-p">Сделано Figma.info</p>
+      </div>
+    </footer>
   </body>
 </html>

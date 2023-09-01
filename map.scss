@@ -1,15 +1,33 @@
 @mixin breakPointSmall {
-    @media screen and (min-width: 1400px) {
-      @content;
-    }
+  @media screen and (max-width: 576px) {
+    @content;
   }
-  
-  @mixin buttonStyle {
-    text-align: center;
-    padding: 10px 20px;
-    color: #fff;
-    border: 1px solid white;
-    background-color: #3a3939;
+}
+
+@mixin breakPointMedium {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin breakPointBig {
+  @media screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin breakPointBigest {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin buttonStyle {
+  text-align: center;
+  padding: 10px 20px;
+  color: #fff;
+  border: 1px solid white;
+  background-color: #3a3939;
 font-family: Gilroy;
 font-size: 18px;
 font-style: normal;
@@ -18,25 +36,25 @@ line-height: normal;
 letter-spacing: 0.9px;
 text-transform: uppercase;
 
-    
+  
 }
 
 @mixin buttonoStyleHover {
-    cursor: pointer;
-    background-color: $light;
-    border: 1px solid #3a3939;
-    color: $dark;
-    transition: 0.5s;
+  cursor: pointer;
+  background-color: $light;
+  border: 1px solid #3a3939;
+  color: $dark;
+  transition: 0.5s;
 
-    color: var(--accent, #333);
-    text-align: center;
-    font-family: Gilroy;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: 0.9px;
-    
+  color: var(--accent, #333);
+  text-align: center;
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  
 }
   
   $dark: #333;
@@ -119,3 +137,126 @@ text-transform: uppercase;
       margin-bottom: 10px;
     }
   }
+
+  .wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+
+  @include breakPointMedium {
+    .wrapper {
+      width: 100%;
+    }
+  }
+
+.header__general a:link {
+  font-family: Gilroy;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+  color: $light;
+}
+
+.header__general a:hover {
+  color: $light;
+  text-shadow: 0px 0px 12px white;
+}
+
+
+
+
+.map__contacts {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid;
+  display: flex;
+  gap: 40px;
+  margin-bottom: 40px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+
+
+.map__map {
+  width: 100%;
+  height: 700px;
+  margin-bottom: 40px;
+}
+
+
+
+.map__nav {
+  color: var(--accent, #333);
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+
+}
+
+.map__link {
+  color: var(--accent, #333);
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+text-decoration-line: underline;
+}
+
+.map__title {
+  color: var(--accent, #333);
+/* h3 / 24m */
+font-family: Gilroy;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: 2.4px;
+text-transform: uppercase;
+}
+.map__contacts-column {
+  width: 25%;
+}
+.map__contacts-column h1 {
+  
+color: var(--accent, #333);
+/* p / 18m */
+font-family: Gilroy;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%; 
+}
+
+.map__contacts-ul {
+  color: var(--accent, #333);
+
+/* p / 14r */
+font-family: Gilroy;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 21px */
+}
+
+
+@include breakPointSmall {
+  .map__contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .map__contacts-column {
+    width: 100%;
+  }
+}
